@@ -24,6 +24,7 @@ func main() {
 	}
 	client := &http.Client{
 		Transport: &http.Transport{
+			// You can likely ignore this dial context it's there to ensure I run with the correct SNI values
 			DialContext: func(ctx context.Context, network, addr string) (net.Conn, error) {
 				fmt.Println("address original =", addr)
 				if addr == "server.moo:9443" {
